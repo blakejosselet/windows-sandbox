@@ -6,7 +6,7 @@ if(Test-Path($tempWsb)){
 }
 
 $downloadsFolder = "$($env:USERPROFILE)\Downloads\dev-sandbox"
-if(!Test-Path($downloadsFolder)){
+if(!(Test-Path($downloadsFolder))){
     mkdir $downloadsFolder
 }
 
