@@ -1,0 +1,23 @@
+<Configuration>
+    <ProtectedClient>Default</ProtectedClient>
+    <VGpu>Enable</VGpu>
+    <Networking>Default</Networking>
+    <ClipboardRedirection>Default</ClipboardRedirection>
+    <PrinterRedirection>Default</PrinterRedirection>
+    <MemoryInMB>256</MemoryInMB>
+    <MappedFolders>
+        <MappedFolder>
+            <HostFolder>{userprofile}\Downloads\dev-sandbox</HostFolder>
+            <SandboxFolder>C:\Users\WDAGUtilityAccount\Downloads\dev-sandbox</SandboxFolder>
+            <ReadOnly>true</ReadOnly>
+        </MappedFolder>
+        <MappedFolder>
+            <HostFolder>{repository_root}\scripts</HostFolder>
+            <SandboxFolder>c:\dev\dev-sandbox\scripts</SandboxFolder>
+        <ReadOnly>true</ReadOnly>
+    </MappedFolder>
+    </MappedFolders>
+    <LogonCommand>
+        <Command>powershell.exe -executionpolicy RemoteSigned -command "start powershell { -noexit -File C:\dev\dev-sandbox\scripts\install-dev-tools.ps1 }"</Command>
+    </LogonCommand>
+</Configuration>
