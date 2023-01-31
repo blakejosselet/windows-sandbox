@@ -11,4 +11,5 @@ $folder = $script | Split-Path -Parent
 Write-host "Executing install scripts..."
 foreach($s in $scripts){
     . "$folder\$s"
+    write-host ""
 }

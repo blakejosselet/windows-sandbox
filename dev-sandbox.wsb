@@ -18,6 +18,8 @@
     </MappedFolder>
     </MappedFolders>
     <LogonCommand>
-        <Command>powershell.exe -executionpolicy RemoteSigned -command "start powershell { -noexit -File C:\dev\dev-sandbox\scripts\install-dev-tools.ps1 }"</Command>
+        <Command>powershell.exe -executionpolicy RemoteSigned -File C:\dev\dev-sandbox\scripts\install-dev-tools.ps1</Command>
+        <!-- Comment the line above and uncomment the line below to view the install script. -->
+        <!-- <Command>powershell.exe -executionpolicy RemoteSigned -command "start powershell { -noexit -File C:\dev\dev-sandbox\scripts\install-dev-tools.ps1 }"</Command> -->
     </LogonCommand>
 </Configuration>

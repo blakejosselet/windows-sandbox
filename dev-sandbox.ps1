@@ -7,7 +7,7 @@ if(Test-Path($tempWsb)){
 
 $downloadsFolder = "$($env:USERPROFILE)\Downloads\dev-sandbox"
 if(!(Test-Path($downloadsFolder))){
-    mkdir $downloadsFolder
+    $null = mkdir $downloadsFolder
 }
 
 foreach($line in $content){

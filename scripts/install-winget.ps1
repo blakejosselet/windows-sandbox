@@ -20,22 +20,23 @@ $url = "https://github.com/microsoft/winget-cli/releases/download/v1.3.2691/Micr
 $file = "Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
 $WebClient.DownloadFile($url, "$downloadsFolder\$file")
 Write-Output 'Installing Winget...'
-try{
-    Add-AppxPackage $file
-}catch{
+Add-AppxPackage $file
+if(!$?){    
     $url = "https://www.nuget.org/api/v2/package/Microsoft.UI.Xaml/2.7.0"
     $file = "microsoft.ui.xaml.2.7.0.zip"
     $expandedFolder = "microsoft.ui.xaml.2.7.0"
+    Write-Output 'Fetching Microsoft.UI.XAML Nuget Package'
     $WebClient.DownloadFile($url, "$downloadsFolder\$file")
     Write-Output 'Extracting Microsoft.UI.XAML Nuget Package'
     Expand-Archive -Path $file -DestinationPath $expandedFolder -Force
-    Write-Output 'Installing Microsoft.UI.XAML to Sandbox'
-    Add-AppxPackage microsoft.ui.xaml.2.7.0\tools\AppX\x64\Release\Microsoft.UI.Xaml.2.7.appx
-    Write-Output 'Fetching Microsoft.UI.XAML Nuget Package'
+    Write-Output 'Installing Microsoft.UI.XAML'
+    $file = "$expandedFolder\tools\AppX\x64\Release\Microsoft.UI.Xaml.2.7.appx"
+    Add-AppxPackage $file
 
+    Write-Output 'Installing Winget...'
+    $file = "Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
     Add-AppxPackage $file
 }
-
 
 Write-Output 'Cleaning up VCLibs installer files...'
 Remove-Item Microsoft.VCLibs.x64.14.00.Desktop.appx
